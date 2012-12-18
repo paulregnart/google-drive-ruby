@@ -51,7 +51,7 @@ module GoogleDrive
 
         # Returns a URL with added version parameter ("?v=3") if needed.
         def to_v3_url(url)
-          if url =~ %r{docs.google.com/feeds/default/private/} && !(url =~ /[?&]v=3/)
+          if url =~ %r{/feeds/default/private/} && !(url =~ /[?&]v=3/)
             return concat_url(url, "?v=3")
           else
             return url

@@ -178,6 +178,9 @@ module GoogleDrive
           params = {:header => {"If-Match" => "*"}}.merge(params)
           initial_url = self.document_feed_entry.css(
               "link[rel='http://schemas.google.com/g/2005#resumable-edit-media']")[0]["href"]
+          #FIX..
+          initial_url = to_v3_url(initial_url)
+          p initial_url
           @document_feed_entry = @session.upload_raw(
               :put, initial_url, io, self.title, params)
         end
